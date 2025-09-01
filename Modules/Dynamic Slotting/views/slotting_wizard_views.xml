@@ -1,0 +1,36 @@
+<odoo>
+    <!-- Define the root menu for Slotting Optimization -->
+    <menuitem id="menu_slotting_root" name="Slotting Optimization" sequence="10"/>
+
+    <!-- Define the view for the Slotting Wizard -->
+    <record id="view_slotting_wizard_form" model="ir.ui.view">
+        <field name="name">slotting.wizard.form</field>
+        <field name="model">slotting.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Slotting Optimization">
+                <group>
+                    <field name="timeframe"/>
+                </group>
+                <footer>
+                    <button name="action_run_slotting" type="object" string="Run Optimization" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+
+                <!-- Add result field below -->
+                <separator string="Optimization Result"/>
+                <field name="result" readonly="1" nolabel="1"/>
+            </form>
+        </field>
+    </record>
+
+    <!-- Define the action for the Slotting Wizard (make sure the ID is unique and correctly referenced) -->
+    <record id="action_slotting_wizard" model="ir.actions.act_window">
+        <field name="name">Run Slotting Optimization</field>
+        <field name="res_model">slotting.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <!-- Define the menu item that opens the Slotting Wizard -->
+    <menuitem id="menu_slotting_run" name="Run Optimization" parent="menu_slotting_root" action="dynamic_slotting.action_slotting_wizard"/>
+</odoo>

@@ -1,0 +1,20 @@
+<odoo>
+    <!-- Root Menu already exists -->
+    <menuitem id="menu_slotting_root" name="Slotting Optimization" sequence="10"/>
+
+    <!-- Wizard Menu (already exists) -->
+    <menuitem id="menu_slotting_run" name="Run Optimization" parent="menu_slotting_root" action="action_slotting_wizard"/>
+
+    <!-- Action to open the result list -->
+    <record id="action_slotting_result" model="ir.actions.act_window">
+        <field name="name">Slotting Results</field>
+        <field name="res_model">slotting.result</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu item to show results -->
+    <menuitem id="menu_slotting_results" name="View Results"
+              parent="menu_slotting_root"
+              action="action_slotting_result"
+              sequence="20"/>
+</odoo>
