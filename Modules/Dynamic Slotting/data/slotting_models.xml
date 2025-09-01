@@ -1,0 +1,8 @@
+<odoo>
+    <!-- Define the SlottingResult model -->
+    <record id="model_slotting_result" model="ir.model">
+        <field name="name">slotting.result</field>
+        <field name="model">slotting.result</field>
+        <field name="state">base</field>
+    </record>
+</odoo>
