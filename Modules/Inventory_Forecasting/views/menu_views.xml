@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Main Menu -->
+    <menuitem id="menu_inventory_slotting_root"
+              name="Inventory Managment"
+              sequence="10"/>
+
+    <!-- Sales Prediction Action -->
+    <record id="action_inventory_slotting_prediction" model="ir.actions.act_window">
+        <field name="name">Sales Prediction</field>
+        <field name="res_model">inventory.slotting.prediction</field>
+        <field name="view_mode">form</field>
+        <field name="target">current</field>
+        <field name="view_id" ref="view_inventory_slotting_prediction_form"/>
+    </record>
+
+    <menuitem id="menu_inventory_slotting_prediction"
+              name="Inventory Managment"
+              parent="menu_inventory_slotting_root"
+              action="action_inventory_slotting_prediction"
+              sequence="10"/>
+</odoo>

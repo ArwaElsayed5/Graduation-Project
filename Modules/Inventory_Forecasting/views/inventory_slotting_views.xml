@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sales Prediction Form View -->
+    <record id="view_inventory_slotting_prediction_form" model="ir.ui.view">
+        <field name="name">inventory.slotting.prediction.form</field>
+        <field name="model">inventory.slotting.prediction</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_predict" string="Predict Sales" type="object" class="oe_highlight"
+                            invisible="state == 'done'"/>
+                    <button name="action_reset" string="Reset" type="object"
+                            invisible="state == 'draft'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>Sales Prediction</h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="item_id" readonly="state == 'done'"/>
+                            <field name="shop_id" readonly="state == 'done'"/>
+                        </group>
+                        <group>
+                            <field name="predicted_sales" invisible="state == 'draft'"
+                                   widget="float" options="{'digits': [16,2]}"/>
+                        </group>
+                    </group>
+                    <div invisible="state == 'done'" class="alert alert-info" role="alert">
+                        Enter the Item ID and Shop ID, then click "Predict Sales" to get the prediction.
+                    </div>
+                    <div invisible="state == 'draft'" class="alert alert-success" role="alert">
+                        The predicted weekly sales have been calculated. Click "Reset" to make another prediction.
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
